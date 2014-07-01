@@ -8,4 +8,5 @@ Gem::Specification.new do |s|
   s.email       = 'k.yanmar@gmail.com'
   s.files       = ["lib/example.rb"]
   s.files       = `git ls-files`.split($/)
+  s.add_development_dependency "rake"
 end
