@@ -1,5 +1,3 @@
 language: ruby
 rvm:
-  - 2.0.0-p247
-env:
-  - CHEF_VERSION=0.11.12
+  - 2.1.0
