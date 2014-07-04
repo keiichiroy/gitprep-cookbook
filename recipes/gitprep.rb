@@ -1,23 +1,24 @@
 # create group
-group "gitprep" do
+group node["gitprep"]["group"] do
   action :create
 end
 
 # create user
-user "gitprep" do
-  gid "gitprep"
+user node["gitprep"]["user"] do
+  gid node["gitprep"]["group"]
   password "$1$PX82HctQ$QlTEVFWH0fJkieBRv8oNF0" # gitprep
+  action :create
 end
 
 # download archive
 git node["gitprep"]["home"] do
-  repository "https://github.com/yuki-kimoto/gitprep"
-  revision "master"
+  repository node["gitprep"]["git"]["repository"]
+  revision node["gitprep"]["git"]["revision"]
 end
 
 # template gitprep.conf
-template "/var/lib/gitprep/gitprep.conf" do
-  source "gitprep.conf.erb"
+template node["gitprep"]["home"] + "/" + node["gitprep"]["conf"]["file"] do
+  source node["gitprep"]["conf"]["template"]
 end
 
 # execute install script
@@ -30,8 +31,8 @@ end
 execute "./setup.sh" do
   cwd node["gitprep"]["home"]
   not_if { ::File.exists?("/var/lib/gitprep/extlib/lib/perl5/Module/CoreList.pm")}
-  user "gitprep"
-  group "gitprep"
+  user node["gitprep"]["user"]
+  group node["gitprep"]["group"]
 end
 
 # execute gitprep
