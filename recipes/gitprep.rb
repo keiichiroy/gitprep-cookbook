@@ -13,7 +13,8 @@ end
 # download archive
 git node["gitprep"]["home"] do
   repository node["gitprep"]["git"]["repository"]
-  revision node["gitprep"]["git"]["revision"]
+  checkout_branch node["gitprep"]["git"]["checkout_branch"]
+  action :checkout
 end
 
 # template gitprep.conf

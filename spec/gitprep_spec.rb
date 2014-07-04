@@ -1,10 +1,7 @@
 require 'spec_helper'
 
 describe 'gitprep::gitprep' do
-  let(:chef_run) do
-    ChefSpec::Runner.new do |node|
-    end.converge(described_recipe)
-  end
+  let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
   it 'creates group "gitprep"' do
     expect(chef_run).to create_group("gitprep")
@@ -16,7 +13,8 @@ describe 'gitprep::gitprep' do
 
   it 'checkouts gitprep repository' do
     expect(chef_run).to checkout_git("/var/lib/gitprep")
-      .with(repository: "http://github.com/yuki-kimoto/gitprep")
+      .with(repository: "https://github.com/yuki-kimoto/gitprep")
+      .with(checkout_branch: "master")
   end
 
 end
