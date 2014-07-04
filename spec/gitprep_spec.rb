@@ -14,4 +14,9 @@ describe 'gitprep::gitprep' do
     expect(chef_run).to create_user("gitprep")
   end
 
+  it 'checkouts gitprep repository' do
+    expect(chef_run).to checkout_git("/var/lib/gitprep")
+      .with(repository: "http://github.com/yuki-kimoto/gitprep")
+  end
+
 end
