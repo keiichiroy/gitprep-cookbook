@@ -7,7 +7,7 @@ default["gitprep"]["user"] = "gitprep"
 
 # git repository
 default["gitprep"]["git"]["repository"] = "https://github.com/yuki-kimoto/gitprep"
-default["gitprep"]["git"]["checkout_branch"] = "master"
+default["gitprep"]["git"]["checkout_branch"] = "latest"
 
 # config file
 default["gitprep"]["conf"]["file"] = "gitprep.conf"

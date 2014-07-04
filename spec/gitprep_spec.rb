@@ -12,9 +12,9 @@ describe 'gitprep::gitprep' do
   end
 
   it 'checkouts gitprep repository' do
-    expect(chef_run).to checkout_git("/var/lib/gitprep")
+    expect(chef_run).to sync_git("/var/lib/gitprep")
       .with(repository: "https://github.com/yuki-kimoto/gitprep")
-      .with(checkout_branch: "master")
+      .with(checkout_branch: "latest")
   end
 
 end

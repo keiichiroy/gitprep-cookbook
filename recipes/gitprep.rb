@@ -14,7 +14,7 @@ end
 git node["gitprep"]["home"] do
   repository node["gitprep"]["git"]["repository"]
   checkout_branch node["gitprep"]["git"]["checkout_branch"]
-  action :checkout
+  action :sync
 end
 
 # template gitprep.conf
