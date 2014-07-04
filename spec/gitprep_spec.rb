@@ -17,4 +17,8 @@ describe 'gitprep::gitprep' do
       .with(checkout_branch: "latest")
   end
 
+  it 'creates a template with attributes' do
+    expect(chef_run).to create_template("/var/lib/gitprep/gitprep.conf")
+  end
+
 end
